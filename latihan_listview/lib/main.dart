@@ -13,15 +13,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Widget> widgets = [];
+  int counter = 1;
 
-  _MyAppState() {
-    for (int i = 0; i < 20; i++) {
-      widgets.add(Text(
-        "Data ke-" + i.toString(),
-        style: TextStyle(fontSize: 30),
-      ));
-    }
-  }
+  // _MyAppState() {
+  //   //constructor
+  //   for (int i = 0; i < 20; i++) {
+  //     widgets.add(Text(
+  //       "Data ke-" + i.toString(),
+  //       style: TextStyle(fontSize: 30),
+  //     ));
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,17 @@ class _MyAppState extends State<MyApp> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            ElevatedButton(onPressed: null, child: Text("Tambah Data")),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    widgets.add(Text(
+                      "Data ke-" + counter.toString(),
+                      style: TextStyle(fontSize: 30),
+                    ));
+                    counter++;
+                  });
+                },
+                child: Text("Tambah Data")),
             ElevatedButton(onPressed: null, child: Text("Hapus Data")),
           ],
         ),
