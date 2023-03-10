@@ -30,7 +30,19 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         title: Text("Latihan ListView"),
       ),
-      body: ListView(children: widgets),
+      body: ListView(children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(onPressed: null, child: Text("Tambah Data")),
+            ElevatedButton(onPressed: null, child: Text("Hapus Data")),
+          ],
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: widgets,
+        )
+      ]),
     ));
   }
 }
