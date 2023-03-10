@@ -47,7 +47,14 @@ class _MyAppState extends State<MyApp> {
                   });
                 },
                 child: Text("Tambah Data")),
-            ElevatedButton(onPressed: null, child: Text("Hapus Data")),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    widgets.removeLast();
+                    counter--;
+                  });
+                },
+                child: Text("Hapus Data")),
           ],
         ),
         Column(
