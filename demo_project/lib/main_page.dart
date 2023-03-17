@@ -1,3 +1,4 @@
+import 'package:demo_project/media_query_page.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {
@@ -6,45 +7,36 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Latihan Media Query"),
+      appBar: AppBar(
+        title: Text("Demo Project"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            goToButton(context, "Learn Media Query", LearnMediaQuery()),
+          ],
         ),
-        // body: Container(
-        //   color: Colors.red,
-        //   //Membuat ukuran [width] pada widget [Container] menjadi 1/3 bagian dari layar
-        //   width: MediaQuery.of(context).size.width / 3,
-        //   //Membuat ukuran [height] pada widget [Container] menjadi 1/2 bagian dari layar
-        //   height: MediaQuery.of(context).size.height / 2,
-        // ),
-
-        body: Center(
-          child: (MediaQuery.of(context).orientation == Orientation.portrait)
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: generateContainers)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: generateContainers),
-        ));
+      ),
+    );
   }
 
-  List<Widget> get generateContainers {
-    return <Widget>[
-      Container(
-        color: Colors.red,
-        width: 100,
-        height: 100,
+  Container goToButton(BuildContext context, String text, Widget goTo) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12), //Margin pada button
+      child: SizedBox(
+        //Menjadikan width pada button memiliki lebar full layar
+        width: MediaQuery.of(context).size.width,
+        child: ElevatedButton(
+          onPressed: () {
+            //[push] Akan memanggil Page berikut nya dan akan ditumpuk seperti "Stack"
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return goTo; //Page tujuan
+            }));
+          },
+          child: Text(text),
+        ),
       ),
-      Container(
-        color: Colors.green,
-        width: 100,
-        height: 100,
-      ),
-      Container(
-        color: Colors.blue,
-        width: 100,
-        height: 100,
-      ),
-    ];
+    );
   }
 }
