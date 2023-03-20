@@ -1,3 +1,4 @@
+import 'package:demo_project/custom_botton.dart';
 import 'package:demo_project/draggable_page.dart';
 import 'package:demo_project/media_query_page.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class MainPage extends StatelessWidget {
           children: [
             goToButton(context, "Learn Media Query", LearnMediaQuery()),
             goToButton(context, "Learn Draggble", DraggblePage()),
+            goToButton(context, "Learn Custom Button", CustomButton()),
           ],
         ),
       ),
